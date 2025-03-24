@@ -1,0 +1,39 @@
+2バイト整数,smallint
+4バイト整数,integer
+整数,integer
+8バイト整数,bigint
+小数,decimal
+浮動小数点数,real
+長数,double precision,
+自動整数,serial
+自動長数,bigserial
+固定長,char,
+可変長,varchar
+文字列,text
+日付,date
+時刻 ,time
+日時 ,timestamp
+タイムゾーン,timestamptz
+間隔,interval
+論理,boolean	,
+識別子,uuid
+列挙型,ENUM
+配列,integer[]
+文字列配列text[],
+json,JSON
+JSONバイナリ,jsonb
+ネット,cidr
+ホスト,inet
+MAC,macaddr
+バイナリ,bytea
+フルテキスト,tsvector
+クエリ,tsquery
+通貨,money
+主キー,primary key
+一意,UNIQUE
+外部キー,REFERENCES
+必須,NOT NULL
+既定値,DEFAULT 
+自動,SERIAL 
+配列開始,(
+配列終了,)
