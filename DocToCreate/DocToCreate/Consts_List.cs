@@ -99,5 +99,19 @@
             /// </summary>
             public static string END_ARRAY = "配列終了";
         }
+
+        public static class Templates
+        {
+            public static string DB_CREATE_TEMPLATE = @"C:\\Users\\Public\\Documents\\data\\DocToCreate\\templates\\DB";
+        }
+
+        public static class ReplaceList
+        {
+            public static String TableName = "@TableName";
+            public static String Column = "@Column";
+
+
+        }
+        
     }
 }

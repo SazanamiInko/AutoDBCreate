@@ -1,6 +1,6 @@
 ﻿using DocToCreate;
 using DocToCreate.template;
-using DocToCreate.template.DB;
+using DocToCreate.template.PodgreSQL;
 using DocumentFormat.OpenXml.Bibliography;
 using System.Text;
 
@@ -23,11 +23,12 @@ foreach (var define_file in define_files)
     mapfile.Initialize();
 
     var datamodel = analyzer.CreateCreateSQL();
-    PosgreSQL engine = new PosgreSQL(datamodel);
+    CreateEngine engine = new CreateEngine(datamodel);
   
-    string text = engine.TransformText();
+    string text = engine.Create();
 
     sb.AppendLine(text);
+    sb.AppendLine("");
     break;
 }
 

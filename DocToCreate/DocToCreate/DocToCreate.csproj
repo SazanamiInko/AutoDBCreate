@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="template\DB\PosgreSQL.cs">
+    <Compile Update="template\PosgreSQL.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>PosgreSQL.tt</DependentUpon>
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="template\DB\PosgreSQL.tt">
+    <None Update="template\PosgreSQL.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>PosgreSQL.cs</LastGenOutput>
     </None>
