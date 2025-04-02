@@ -128,16 +128,19 @@ namespace DocToCreate
                                         columnDataModel.ColumnRule.Add(mapfile.Map[ConstsList.RuleList.AUTO]);
                                         break;
                                     //外部キー
-                                    case ConstsList.DefineList.COLUMN_FORIEN_POS:
-                                        var value = text.Split(ConstsList.DefineList.FORINE_DIVIDE);
+                                    case ConstsList.DefineList.COLUMN_FORIEN_TABLE_POS:
+                                        
+                                        columnDataModel.ForienTable = text;
+                                        break;
+                                    case ConstsList.DefineList.COLUMN_FORIEN_COLUMN_POS:
                                         var forien_rule = mapfile.Map[ConstsList.RuleList.FORIEN];
-                                        var forien_phrase = string.Format("{0}{1}.{2]", forien_rule, value[0], value[1]);
+                                        var forien_phrase = $"{forien_rule} {columnDataModel.ForienTable}({text})";
                                         columnDataModel.ColumnRule.Add(forien_phrase);
                                         break;
                                     //デフォルト
                                     case ConstsList.DefineList.COLUMN_DEFAULT_POS:
-                                        var default_rule = mapfile.Map[ConstsList.RuleList.FORIEN];
-                                        var default_phrase = string.Format("{}{]", default_rule, text);
+                                        var default_rule = mapfile.Map[ConstsList.RuleList.DEFAULT];
+                                        var default_phrase = $"{default_rule}{text}";
                                         columnDataModel.ColumnRule.Add(default_phrase);
                                         break;
                                     default:

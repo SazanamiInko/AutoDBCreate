@@ -11,8 +11,9 @@
 可変長,varchar
 文字列,text
 日付,date
-時刻 ,time
-日時 ,timestamp
+時刻,time
+時間,time
+日時,timestamp
 タイムゾーン,timestamptz
 間隔,interval
 論理,boolean	,
@@ -32,6 +33,7 @@ MAC,macaddr
 主キー,primary key
 一意,UNIQUE
 外部キー,REFERENCES
+外部,REFERENCES
 必須,NOT NULL
 既定値,DEFAULT 
 自動,SERIAL 

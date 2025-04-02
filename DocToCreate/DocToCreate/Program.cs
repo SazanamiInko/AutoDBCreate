@@ -12,6 +12,7 @@ string outputInheritedPath = @"C:\Users\Public\Documents\data\DocToCreate\output
 DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Public\Documents\data\DocToCreate");
 
 var define_files = dir.GetFiles("*.xlsx");
+mapfile.Initialize();
 
 foreach (var define_file in define_files)
 {
@@ -20,7 +21,7 @@ foreach (var define_file in define_files)
     DefineAnalyzer analyzer = new DefineAnalyzer();
     analyzer.Path = path;
 
-    mapfile.Initialize();
+    
 
     var datamodel = analyzer.CreateCreateSQL();
     CreateEngine engine = new CreateEngine(datamodel);
@@ -29,7 +30,7 @@ foreach (var define_file in define_files)
 
     sb.AppendLine(text);
     sb.AppendLine("");
-    break;
+    
 }
 
 File.WriteAllText(outputInheritedPath, sb.ToString());

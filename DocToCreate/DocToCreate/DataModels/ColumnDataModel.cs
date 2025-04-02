@@ -20,6 +20,12 @@
         ///　制約
         /// </summary>
         public List<string> ColumnRule { get; } = new List<string>();
+
+        /// <summary>
+        /// 外部テーブル
+        /// </summary>
+        public string ForienTable { get; set; } = string.Empty;
+
        /// <summary>
        /// 制約文字
        /// </summary>

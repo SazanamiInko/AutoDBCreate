@@ -41,17 +41,17 @@
             /// <summary>
             /// 外部キー位置
             /// </summary>
-            public const string COLUMN_FORIEN_POS = "CC";
+            public const string COLUMN_FORIEN_TABLE_POS = "CC";
 
             /// <summary>
             /// 規定値
             /// </summary>
-            public const string COLUMN_DEFAULT_POS = "CJ";
+            public const string COLUMN_DEFAULT_POS = "CQ";
 
             /// <summary>
             /// 外部キー区切り文字
             /// </summary>
-            public const string FORINE_DIVIDE = ".";
+            public const string COLUMN_FORIEN_COLUMN_POS = "CJ";
 
             /// <summary>
             /// 文字列長位置
