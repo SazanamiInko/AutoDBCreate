@@ -20,6 +20,11 @@
         /// 主キーのグループ
         /// </summary>
         public List<String> PrimaryKeys { get; }
+        
+        /// <summary>
+        /// 外部キー
+        /// </summary>
+        public List<ForienKeyDataModel> ForienKeys { get; }
         #endregion
 
         /// <summary>
@@ -30,6 +35,7 @@
             TableName = string.Empty;
             Columns = new List<ColumnDataModel>();
             PrimaryKeys = new List<String>();
+            ForienKeys = new List<ForienKeyDataModel>();
         }
     }
 }

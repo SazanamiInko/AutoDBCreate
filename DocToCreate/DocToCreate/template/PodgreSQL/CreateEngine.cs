@@ -88,7 +88,7 @@ namespace DocToCreate.template.PodgreSQL
                     {
                         if (!string.IsNullOrEmpty(column.EndMark))
                         {
-                 
+
                             sb.AppendLine(CreateColumnString(line, "{0} {1} {2},", column));
                         }
                         else
@@ -106,6 +106,19 @@ namespace DocToCreate.template.PodgreSQL
                     sb.Append(",");
                     sb.AppendLine("");
                     sb.Append(primary_new_line);
+                }
+                else if (isHit(line, ConstsList.ReplaceList.FORIENKEY))
+                {
+                    StringBuilder forienphrases = new StringBuilder();
+                    foreach (var forienkey in dataModel.ForienKeys)
+                    {
+                        forienphrases.Append(",");
+                        forienphrases.AppendLine("");
+                        var replace_text = line.Replace(ConstsList.ReplaceList.FORIENKEY, forienkey.ForienPhrase);
+                        forienphrases.Append(replace_text);
+                    }
+                    var forien_new_line = line.Replace(ConstsList.ReplaceList.FORIENKEY, forienphrases.ToString());
+                    sb.Append(forien_new_line);
                 }
                 else
                 {

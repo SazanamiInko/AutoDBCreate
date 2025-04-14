@@ -81,7 +81,12 @@
             /// <summary>
             /// 外部
             /// </summary>
-            public static string FORIEN = "外部";
+            public static string FORIEN = "外部キー";
+
+            /// <summary>
+            /// 参照部
+            /// </summary>
+            public static string REFERENCE = "参照部";
 
             /// <summary>
             /// 既定値
@@ -131,7 +136,11 @@
             /// 主キー
             /// </summary>
             public static String PRIMARYKEY = "@PrimaryKey";
-
+            /// <summary>
+            /// 外部キー
+            /// </summary>
+            public static String FORIENKEY = "@Forienkey";
+        
         }
         
     }

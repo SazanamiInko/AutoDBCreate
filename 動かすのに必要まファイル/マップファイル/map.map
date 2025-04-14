@@ -30,10 +30,10 @@ MAC,macaddr
 フルテキスト,tsvector
 クエリ,tsquery
 通貨,money
-主キー,primary key
+主キー,PRIMARY KEY
 一意,UNIQUE
-外部キー,REFERENCES
-外部,REFERENCES
+外部キー,FOREIGN KEY
+参照部,REFERENCES
 必須,NOT NULL
 既定値,DEFAULT 
 自動,SERIAL 

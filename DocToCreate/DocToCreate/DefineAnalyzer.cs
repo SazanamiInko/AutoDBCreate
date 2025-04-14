@@ -130,13 +130,22 @@ namespace DocToCreate
                                     //外部キー
                                     case ConstsList.DefineList.COLUMN_FORIEN_TABLE_POS:
                                         columnDataModel.ForienTable = text;
+                                        ForienKeyDataModel forien = new ForienKeyDataModel(columnDataModel.ColumnName, columnDataModel.ForienTable); 
+                                        dataModel.ForienKeys.Add(forien);
                                         break;
                                     case ConstsList.DefineList.COLUMN_FORIEN_COLUMN_POS:
-                                        var forien_rule = mapfile.Map[ConstsList.RuleList.FORIEN];
-                                        var forien_phrase = $"{forien_rule} {columnDataModel.ForienTable}({text})";
-                                        columnDataModel.ColumnRule.Add(forien_phrase);
+                                      if(!string.IsNullOrEmpty(columnDataModel.ForienTable))
+                                       {
+                                            var target = dataModel.ForienKeys.Where(record => record.ColumnName == columnDataModel.ColumnName)
+                                                .First();
+                                            target.RefColumn = text;
+                                            var forien_rule = mapfile.Map[ConstsList.RuleList.FORIEN];
+                                            var refarence_rule = mapfile.Map[ConstsList.RuleList.REFERENCE];
+                                            var forien_phrase = $"{forien_rule} ({target.ColumnName}) {refarence_rule} {target.RefTable}({target.RefColumn})";
+                                            target.ForienPhrase = forien_phrase;
+                                        }
                                         break;
-                                    //デフォルト
+                                    //既定値
                                     case ConstsList.DefineList.COLUMN_DEFAULT_POS:
                                         var default_rule = mapfile.Map[ConstsList.RuleList.DEFAULT];
                                         var default_phrase = $"{default_rule}{text}";

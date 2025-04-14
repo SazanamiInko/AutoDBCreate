@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS @TableName
 
 	@Column
 	@PrimaryKey
+	@Forienkey
 
 );
