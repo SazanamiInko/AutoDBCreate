@@ -10,11 +10,11 @@ namespace DocToCreate
     public class DefineAnalyzer
     {
         #region　プロパティ
- 
+
         /// <summary>
         /// パス
         /// </summary>
-        public String Path { get; set; }
+        public String Path { get; set; } = string.Empty;
         #endregion
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace DocToCreate
                                         break;
                                     //主キー
                                     case ConstsList.DefineList.COLUNN_PRIMARY_POS:
-                                        columnDataModel.ColumnRule.Add(mapfile.Map[ConstsList.RuleList.PRIMARYKEY]);
+                                        dataModel.PrimaryKeys.Add(columnDataModel.ColumnName);
                                         break;
                                 　      
                                     //必須キー
@@ -129,7 +129,6 @@ namespace DocToCreate
                                         break;
                                     //外部キー
                                     case ConstsList.DefineList.COLUMN_FORIEN_TABLE_POS:
-                                        
                                         columnDataModel.ForienTable = text;
                                         break;
                                     case ConstsList.DefineList.COLUMN_FORIEN_COLUMN_POS:
@@ -157,7 +156,8 @@ namespace DocToCreate
                         {
 
                             var last = dataModel.Columns.Last();
-                            if (last != null)
+                            if (last != null
+                                || dataModel.PrimaryKeys.Count > 0) //主キー指定に続く
                             {
                                 last.EndMark = ",";
                             }

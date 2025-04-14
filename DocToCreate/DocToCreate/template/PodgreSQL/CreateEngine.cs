@@ -1,11 +1,6 @@
 ﻿using DocToCreate.DataModels;
-using DocumentFormat.OpenXml.Drawing.Diagrams;
 using DocumentFormat.OpenXml.Vml;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DocToCreate.template.PodgreSQL
 {
@@ -45,9 +40,20 @@ namespace DocToCreate.template.PodgreSQL
                 column.ColumnName,
                 column.ColumnType,
                 column.RuleString);
-            var new_line=line.Replace(ConstsList.ReplaceList.Column, replace_token);
+            var new_line=line.Replace(ConstsList.ReplaceList.COLUMN, replace_token);
             return new_line;
-        }        
+        }
+        
+        /// <summary>
+        /// 置き換え判定
+        /// </summary>
+        /// <param name="line">文字列</param>
+        /// <param name="keyword">置き換えキーワード</param>
+        /// <returns>置き換え文字があった場合はtrue</returns>
+        private bool isHit(string line,string keyword)
+        {
+            return line.IndexOf(keyword) > -1;
+        }
 
         /// <summary>
         /// 作成
@@ -70,25 +76,36 @@ namespace DocToCreate.template.PodgreSQL
                     continue;
                 }
 
-                if (line.IndexOf(ConstsList.ReplaceList.TableName) > -1)
+                if (isHit(line, ConstsList.ReplaceList.TABLENAME))
                 {
-                    
-                    new_line=line.Replace(ConstsList.ReplaceList.TableName, dataModel.TableName);
+
+                    new_line = line.Replace(ConstsList.ReplaceList.TABLENAME, dataModel.TableName);
                     sb.AppendLine(new_line);
                 }
-                else if (line.IndexOf(ConstsList.ReplaceList.Column) > -1)
+                else if (isHit(line, ConstsList.ReplaceList.COLUMN))
                 {
                     foreach (var column in dataModel.Columns)
                     {
                         if (!string.IsNullOrEmpty(column.EndMark))
                         {
+                 
                             sb.AppendLine(CreateColumnString(line, "{0} {1} {2},", column));
                         }
                         else
                         {
-                            sb.AppendLine(CreateColumnString(line, "{0} {1} {2}", column));
+                            sb.Append(CreateColumnString(line, "{0} {1} {2}", column));
                         }
                     }
+                }
+                else if (isHit(line, ConstsList.ReplaceList.PRIMARYKEY))
+                {
+                    var phrase = mapfile.Map[ConstsList.RuleList.PRIMARYKEY];
+                    var keys = string.Join(",", dataModel.PrimaryKeys);
+                    var primary_phrase = string.Format("{0}({1})", phrase, keys);
+                    var primary_new_line = line.Replace(ConstsList.ReplaceList.PRIMARYKEY, primary_phrase);
+                    sb.Append(",");
+                    sb.AppendLine("");
+                    sb.Append(primary_new_line);
                 }
                 else
                 {

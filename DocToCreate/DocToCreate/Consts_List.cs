@@ -59,6 +59,9 @@
             public const string COLUMN_LENGTH_POS = "AU";
         }
 
+        /// <summary>
+        /// 制約リスト
+        /// </summary>
         public static class RuleList
         {
             /// <summary>
@@ -100,16 +103,34 @@
             public static string END_ARRAY = "配列終了";
         }
 
+        /// <summary>
+        /// テンプレート
+        /// </summary>
         public static class Templates
         {
+            /// <summary>
+            /// テンプレートファイルPosgreSQL
+            /// </summary>
             public static string DB_CREATE_TEMPLATE = @"C:\\Users\\Public\\Documents\\data\\DocToCreate\\templates\\DB";
         }
 
+        /// <summary>
+        /// テンプレート置き換えリスト
+        /// </summary>
         public static class ReplaceList
         {
-            public static String TableName = "@TableName";
-            public static String Column = "@Column";
-
+            /// <summary>
+            /// テーブル名
+            /// </summary>
+            public static String TABLENAME = "@TableName";
+            /// <summary>
+            /// 列行
+            /// </summary>
+            public static String COLUMN = "@Column";
+            /// <summary>
+            /// 主キー
+            /// </summary>
+            public static String PRIMARYKEY = "@PrimaryKey";
 
         }
         

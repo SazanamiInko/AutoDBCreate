@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DocToCreate.DataModels
+﻿namespace DocToCreate.DataModels
 {
     /// <summary>
     /// Create文本体
@@ -21,6 +15,11 @@ namespace DocToCreate.DataModels
         /// 列
         /// </summary>
         public List<ColumnDataModel> Columns { get; set; }
+
+        /// <summary>
+        /// 主キーのグループ
+        /// </summary>
+        public List<String> PrimaryKeys { get; }
         #endregion
 
         /// <summary>
@@ -30,6 +29,7 @@ namespace DocToCreate.DataModels
         {
             TableName = string.Empty;
             Columns = new List<ColumnDataModel>();
+            PrimaryKeys = new List<String>();
         }
     }
 }
