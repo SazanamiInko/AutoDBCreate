@@ -175,7 +175,13 @@ namespace DocToCreate
                     }
                 }
             }
-          return dataModel;
+
+            //主キーの作成
+            var phrase = mapfile.Map[ConstsList.RuleList.PRIMARYKEY];
+            var keys = string.Join(",", dataModel.PrimaryKeys);
+            dataModel.PrimalyKeyPhrase = string.Format("{0}({1})", phrase, keys);
+            
+            return dataModel;
         }
     }
 }

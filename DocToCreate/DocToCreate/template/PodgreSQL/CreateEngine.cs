@@ -99,10 +99,7 @@ namespace DocToCreate.template.PodgreSQL
                 }
                 else if (isHit(line, ConstsList.ReplaceList.PRIMARYKEY))
                 {
-                    var phrase = mapfile.Map[ConstsList.RuleList.PRIMARYKEY];
-                    var keys = string.Join(",", dataModel.PrimaryKeys);
-                    var primary_phrase = string.Format("{0}({1})", phrase, keys);
-                    var primary_new_line = line.Replace(ConstsList.ReplaceList.PRIMARYKEY, primary_phrase);
+                    var primary_new_line = line.Replace(ConstsList.ReplaceList.PRIMARYKEY, dataModel.PrimalyKeyPhrase);
                     sb.Append(",");
                     sb.AppendLine("");
                     sb.Append(primary_new_line);

@@ -20,7 +20,13 @@
         /// 主キーのグループ
         /// </summary>
         public List<String> PrimaryKeys { get; }
-        
+
+        /// <summary>
+        /// 主キーフレーズ
+        /// </summary>
+        public string PrimalyKeyPhrase { get; set; } = string.Empty;
+
+
         /// <summary>
         /// 外部キー
         /// </summary>
